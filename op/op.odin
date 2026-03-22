@@ -4,20 +4,22 @@ import "core:fmt"
 import "core:terminal/ansi"
 
 main :: proc() {
-    colorized : string
-    colorized = colorize("Hej med färg!")
+    colorized := colorize("Hej med färg!")
+    defer delete(colorized)
     fmt.println(colorized)
 }
 
-/*
-I Odin måste du själv hålla ordning på minnet.
-vad har returvärdet för livscykel?
-*/
-colorize :: proc(message: string) -> string {
-    return fmt.aprintf("%s", message)
+colorize :: proc(message: string, allocator := context.allocator) -> string {
+    c := fmt.aprintf(
+        "%s%s%s",
+        ansi.CSI + ansi.FG_CYAN + ansi.SGR,
+        message,
+        ansi.CSI + ansi.RESET + ansi.SGR,
+        allocator = allocator
+    )
+    // defer delete(c)
+    return fmt.aprintf("%s", c, allocator = allocator)
 }
-
-
 
 
 
