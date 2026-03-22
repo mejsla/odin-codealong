@@ -14,25 +14,28 @@ Color :: enum {
     WHITE,
 }
 
+// https://odin-lang.org/docs/overview/#enumerated-array
+AnsiColors :: [Color]string {
+    .BLACK      = ansi.FG_BLACK,
+    .RED        = ansi.FG_RED,
+    .GREEN      = ansi.FG_GREEN,
+    .YELLOW     = ansi.FG_YELLOW,
+    .BLUE       = ansi.FG_BLUE,
+    .MAGENTA    = ansi.FG_MAGENTA,
+    .CYAN       = ansi.FG_CYAN,
+    .WHITE      = ansi.FG_WHITE,
+}
+
 main :: proc() {
-    colorized := colorize("Hej med färg!", color = .RED)
+    colorized := colorize("Hej med färg!", fg_color = .RED)
     defer delete(colorized)
     fmt.println(colorized)
 }
 
-colorize :: proc(message: string, color : Color = Color.WHITE, allocator := context.allocator) -> string {
-    colorStr : string
+colorize :: proc(message: string, fg_color := Color.WHITE, bg_color := Color.BLUE) -> string {
 
-    switch color {
-    case .BLACK: colorStr = ansi.FG_BLACK
-    case .RED: colorStr = ansi.FG_RED
-    case .GREEN: colorStr = ansi.FG_GREEN
-    case .YELLOW: colorStr = ansi.FG_YELLOW
-    case .BLUE: colorStr = ansi.FG_BLUE
-    case .MAGENTA: colorStr = ansi.FG_MAGENTA
-    case .CYAN: colorStr = ansi.FG_CYAN
-    case .WHITE: colorStr = ansi.FG_WHITE
-    }
+    // Quiz!!! Varför funkar det inte?
+    colorStr := AnsiColors[fg_color]
 
     c := fmt.aprintf(
     "%s%s%s%s%s",
@@ -41,8 +44,7 @@ colorize :: proc(message: string, color : Color = Color.WHITE, allocator := cont
     ansi.SGR,
     message,
     ansi.CSI + ansi.RESET + ansi.SGR,
-    allocator = allocator
     )
     defer delete(c)
-    return fmt.aprintf("%s", c, allocator = allocator)
+    return fmt.aprintf("%s", c)
 }
