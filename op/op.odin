@@ -1,17 +1,48 @@
 package op
-// Package styrs _inte_ av katalognamnet
 
 import "core:fmt"
-// Importer är bara kataloger
+import "core:terminal/ansi"
 
 main :: proc() {
-    // Ja main är då en procedure :-O
-    // Odin har inte tid med "side effect free functions vs, procedures"
-    // för Odin försöker få jobbet gjort.
-    fmt.println("Hej från Odin")
+    colorized : string
+    colorized = colorize("Hej med färg!")
+    fmt.println(colorized)
 }
 
 /*
-Bygg med: odin build op
-Kör med: odin run op
+I Odin måste du själv hålla ordning på minnet.
+vad har returvärdet för livscykel?
+*/
+colorize :: proc(message: string) -> string {
+    return fmt.aprintf("%s", message)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+"One of my favourite things about Go is the defer statement." -
+https://www.gingerbill.org/article/2015/08/19/defer-in-cpp/
 */
