@@ -1,17 +1,17 @@
 package op
+// Package styrs _inte_ av katalognamnet
+
+import "core:fmt"
+// Importer är bara kataloger
 
 main :: proc() {
-    /*
-    Välkommen till Odin.
-    https://odin-lang.org/
-
-    * The Data-Oriented Language for Sane Software Development. *
-
-    Odin is a general-purpose programming language with distinct typing
-    built for high performance, modern systems and
-    data-oriented programming.
-
-    Odin is the C alternative for the Joy of Programming.
-
-    */
+    // Ja main är då en procedure :-O
+    // Odin har inte tid med "side effect free functions vs, procedures"
+    // för Odin försöker få jobbet gjort.
+    fmt.println("Hej från Odin")
 }
+
+/*
+Bygg med: odin build op
+Kör med: odin run op
+*/
