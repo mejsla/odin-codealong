@@ -57,3 +57,4 @@ dkms.conf
 .intellij/
 bin/
 .idea/
+/ols.json
