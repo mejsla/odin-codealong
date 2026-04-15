@@ -16,6 +16,10 @@ OBS denna Code-A-Long använder Odin version `dev-2026-03`
 
 Jag har bara använt "from source" på Linux. Om ni vill göra på något annat sätt så fyll gärna på med tips & tricks här (PR välkomna).
 
+## På Mac
+
+[Petter har skrivit bra instruktioner](SETUP-MAC.md)
+
 ## Från källkod på Linux
 
 ### LLVM
@@ -47,7 +51,13 @@ På Fedora så kom dom två binärerna i samma paket.
 
 ## Jetbrains
 
-Jag har använt en Odin plugin till Jetbrains produkter. Tyvärr så slutade den att funka med senare version av Jetbrains IDÉer :-( 
+Jag har använt en Odin plugin till Jetbrains produkter. 
+
+EDIT: ~~Tyvärr så slutade den att funka med senare version av Jetbrains IDÉer~~ 
+
+Den är uppdaterad och funkar nu i 2026.1 av Jetbrains produkter.
+
+https://plugins.jetbrains.com/plugin/22933-odin-support
 
 ## Odin Language Server
 
